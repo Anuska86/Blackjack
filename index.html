@@ -5,19 +5,21 @@
     <title>Blackjack</title>
   </head>
   <body>
-    <h1>Blackjack</h1>
-    <p id="message-el">Want to play a round?</p>
-    <button onclick="startGame()">Start Game</button>
-    <button onclick="drawCard()">Draw Card</button>
+    <div id="main-wrapper">
+      <h1>Blackjack</h1>
+      <p id="message-el">Want to play a round?</p>
+      <button onclick="startGame()">Start Game</button>
+      <button onclick="drawCard()">Draw Card</button>
 
-    <p id="cards-el">Cards:</p>
-    <div id="table-strip">
-      <div id="card-container"></div>
-    </div>
-    <p id="sum-el">Sum:</p>
-    <p id="chip-counter">Chips: 100</p>
-    <div id="lose-overlay">
-      <button onclick="resetGame()">Try Again</button>
+      <p id="cards-el">Cards:</p>
+      <div id="table-strip">
+        <div id="card-container"></div>
+      </div>
+      <p id="sum-el">Sum:</p>
+      <p id="chip-counter">Chips: 100</p>
+      <div id="lose-overlay">
+        <button onclick="resetGame()">Try Again</button>
+      </div>
     </div>
 
     <script src="index.js"></script>
