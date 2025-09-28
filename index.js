@@ -24,12 +24,36 @@ function getCardFilename(card) {
   return `images/cards/${valueName}_of_${card.suit}.png`;
 }
 
+//ACES
+function calculateSum(cards) {
+  let total = 0;
+  let aceCount = 0;
+
+  cards.forEach((card) => {
+    let value = card.value;
+    if (value > 10) value = 10;
+    if (value === 1) {
+      aceCount++;
+      value = 11;
+    }
+    total += value;
+  });
+
+  while (total > 21 && aceCount > 0) {
+    total -= 10; // downgrade an Ace from 11 to 1
+    aceCount--;
+  }
+
+  return total;
+}
+
 //Start the game
 function startGame() {
   isAlive = true;
   hasBlackJack = false;
   cards = [getRandomCard(), getRandomCard()];
-  sum = cards[0].value + cards[1].value;
+  sum = calculateSum(cards);
+
   renderGame();
 }
 
@@ -38,7 +62,7 @@ function drawCard() {
   if (isAlive && !hasBlackJack) {
     const card = getRandomCard();
     cards.push(card);
-    sum += card.value;
+    sum = calculateSum(cards);
     renderGame();
   }
 }
@@ -53,6 +77,12 @@ function resetGame() {
   document.getElementById("cards-el").textContent = "Cards:";
   document.getElementById("sum-el").textContent = "Sum:";
   document.getElementById("card-container").innerHTML = "";
+
+  const overlay = document.getElementById("lose-overlay");
+  overlay.style.opacity = "0";
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 500);
 }
 
 function updateChips(amount) {
@@ -115,6 +145,11 @@ function renderGame() {
     message = "You're out of the game! 😭";
     isAlive = false;
     updateChips(-25);
+    handleLoss();
+
+    const table = document.getElementById("table-strip");
+    table.classList.add("shake");
+    setTimeout(() => table.classList.remove("shake"), 500);
   }
 
   document.getElementById("message-el").textContent = message;
@@ -128,5 +163,16 @@ function launchConfetti() {
     spread: 70,
     origin: { y: 0.6 },
     colors: ["#ff4c4c", "#ffd700", "#ffffff"],
+  });
+}
+
+//LOSE
+
+function handleLoss() {
+  // Show the overlay
+  const overlay = document.getElementById("lose-overlay");
+  overlay.style.display = "block";
+  requestAnimationFrame(() => {
+    overlay.style.opacity = "1";
   });
 }

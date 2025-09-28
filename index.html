@@ -9,7 +9,6 @@
     <p id="message-el">Want to play a round?</p>
     <button onclick="startGame()">Start Game</button>
     <button onclick="drawCard()">Draw Card</button>
-    <button onclick="resetGame()">Reset</button>
 
     <p id="cards-el">Cards:</p>
     <div id="table-strip">
@@ -17,6 +16,9 @@
     </div>
     <p id="sum-el">Sum:</p>
     <p id="chip-counter">Chips: 100</p>
+    <div id="lose-overlay">
+      <button onclick="resetGame()">Try Again</button>
+    </div>
 
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
