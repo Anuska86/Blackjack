@@ -1,12 +1,24 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" href="index.css" />
+    <title>Blackjack</title>
   </head>
   <body>
     <h1>Blackjack</h1>
     <p id="message-el">Want to play a round?</p>
-    <p>Cards:</p>
-    <p>Sum:</p>
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="drawCard()">Draw Card</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <p id="cards-el">Cards:</p>
+    <div id="table-strip">
+      <div id="card-container"></div>
+    </div>
+    <p id="sum-el">Sum:</p>
+    <p id="chip-counter">Chips: 100</p>
+
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </body>
 </html>

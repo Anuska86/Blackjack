@@ -1,13 +1,108 @@
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  background-image: url("images/table.png");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding-top: 50px;
 }
+
+/*TEXT*/
 
 h1 {
   color: goldenrod;
+  font-size: 3rem;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
 }
 
+p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
 
 #message-el {
-    color: red
+  color: #ff4c4c;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/*BUTTON*/
+
+button {
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px black;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #daa520;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+  box-shadow: 1px 1px 3px black;
+}
+
+/*CARDS*/
+
+#card-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card-img {
+  width: 80px;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: 0.1s;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 5px;
+}
+
+.card-img.show {
+  opacity: 1;
+  transform: scale(1);
+  background: #d4cbcb;
+}
+
+/*TABLE*/
+
+#table-strip {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/*Others*/
+
+#cards-el,
+#sum-el {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  margin: 10px 0;
 }
