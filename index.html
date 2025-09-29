@@ -9,8 +9,6 @@
       <h1>Blackjack</h1>
       <p id="message-el">Want to play a round?</p>
       <button onclick="startGame()">Start Game</button>
-      <button onclick="drawCard()">Draw Card</button>
-      <button onclick="holdGame()">Hold</button>
 
       <p id="cards-el">Cards:</p>
       <div id="table-strip">
@@ -18,6 +16,10 @@
       </div>
       <p id="sum-el">Sum:</p>
       <p id="chip-counter">Chips: 100</p>
+
+      <button id="draw-btn" onclick="drawCard()" disabled>Draw Card</button>
+      <button id="hold-btn" onclick="holdGame()" disabled>Hold</button>
+
       <div id="lose-overlay">
         <button onclick="resetGame()">Try Again</button>
       </div>

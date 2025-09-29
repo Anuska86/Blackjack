@@ -54,6 +54,10 @@ function startGame() {
   cards = [getRandomCard(), getRandomCard()];
   sum = calculateSum(cards);
 
+  // Enable action buttons
+  document.getElementById("draw-btn").disabled = false;
+  document.getElementById("hold-btn").disabled = false;
+
   renderGame();
 }
 
@@ -73,10 +77,14 @@ function resetGame() {
   sum = 0;
   hasBlackJack = false;
   isAlive = false;
+
   document.getElementById("message-el").textContent = "Want to play a round?";
   document.getElementById("cards-el").textContent = "Cards:";
   document.getElementById("sum-el").textContent = "Sum:";
   document.getElementById("card-container").innerHTML = "";
+
+  document.getElementById("draw-btn").disabled = true;
+  document.getElementById("hold-btn").disabled = true;
 
   const overlay = document.getElementById("lose-overlay");
   overlay.style.opacity = "0";
