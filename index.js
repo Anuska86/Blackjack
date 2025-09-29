@@ -176,3 +176,21 @@ function handleLoss() {
     overlay.style.opacity = "1";
   });
 }
+
+//HOLD GAME
+function holdGame() {
+  if (isAlive && !hasBlackJack) {
+    isAlive = false;
+
+    let message = "";
+    if (sum >= 17 && sum < 21) {
+      message = "You chose to hold. Let's see how it plays out... 🤞";
+      updateChips(10);
+    } else if (sum < 17) {
+      message = "You held early. Risky move! 😬";
+      updateChips(-10);
+    }
+
+    document.getElementById("message-el").textContent = message;
+  }
+}
