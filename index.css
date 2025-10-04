@@ -109,6 +109,9 @@ button:disabled {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border: 8px solid #8b4513;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 16px;
 }
 
 /*Others*/
