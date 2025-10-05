@@ -10,23 +10,25 @@
       <p id="message-el">Want to play a round?</p>
       <button id="start-btn" onclick="startGame()">Start Game</button>
 
-      <div class="player-info">
-        <h2>Player</h2>
-        <p id="cards-el">Cards:</p>
-        <div id="card-container"></div>
-        <p id="sum-el">Sum:</p>
-        <p id="chip-counter">Chips: 100</p>
+      <div id="table-strip">
+        <div class="player-info">
+          <h2>Player</h2>
+          <p id="cards-el">Cards:</p>
+          <div id="card-container"></div>
+          <p id="sum-el">Sum:</p>
+          <p id="chip-counter">Chips: 100</p>
+        </div>
+
+        <div class="dealer-info">
+          <h2>Dealer</h2>
+          <p id="dealer-cards-el">Cards:</p>
+          <div id="dealer-container"></div>
+          <p id="dealer-sum-el">Sum:</p>
+        </div>
       </div>
 
       <button id="draw-btn" onclick="drawCard()" disabled>Draw Card</button>
       <button id="hold-btn" onclick="holdGame()" disabled>Hold</button>
-
-      <div class="dealer-info">
-        <h2>Dealer</h2>
-        <p id="dealer-cards-el">Cards:</p>
-        <div id="dealer-container"></div>
-        <p id="dealer-sum-el">Sum:</p>
-      </div>
 
       <div id="lose-overlay">
         <h2 style="color: red; font-size: 2rem">You Lost 😭</h2>
