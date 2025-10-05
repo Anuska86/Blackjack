@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+#main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -67,6 +73,14 @@ button:disabled {
   transition: background-color 0.3s ease;
 }
 
+#hold-btn {
+  margin-bottom: 15px;
+}
+
+#start-btn {
+  margin-bottom: 15px;
+}
+
 /*CARDS*/
 
 #card-container {
@@ -112,6 +126,52 @@ button:disabled {
   border: 8px solid #8b4513;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
   border-radius: 16px;
+}
+
+.player-info,
+.dealer-info {
+  width: 100%;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border: 8px solid #8b4513;
+  color: white;
+  text-align: center;
+}
+
+/*DEALER*/
+
+#dealer-strip {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 20px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border: 8px solid #444;
+  color: white;
+  text-align: center;
+}
+
+#dealer-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+#dealer-cards-el,
+#dealer-sum-el {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 8px 0;
 }
 
 /*Others*/

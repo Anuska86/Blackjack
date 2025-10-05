@@ -8,17 +8,25 @@
     <div id="main-wrapper">
       <h1>Blackjack</h1>
       <p id="message-el">Want to play a round?</p>
-      <button onclick="startGame()">Start Game</button>
+      <button id="start-btn" onclick="startGame()">Start Game</button>
 
-      <p id="cards-el">Cards:</p>
-      <div id="table-strip">
+      <div class="player-info">
+        <h2>Player</h2>
+        <p id="cards-el">Cards:</p>
         <div id="card-container"></div>
+        <p id="sum-el">Sum:</p>
+        <p id="chip-counter">Chips: 100</p>
       </div>
-      <p id="sum-el">Sum:</p>
-      <p id="chip-counter">Chips: 100</p>
 
       <button id="draw-btn" onclick="drawCard()" disabled>Draw Card</button>
       <button id="hold-btn" onclick="holdGame()" disabled>Hold</button>
+
+      <div class="dealer-info">
+        <h2>Dealer</h2>
+        <p id="dealer-cards-el">Cards:</p>
+        <div id="dealer-container"></div>
+        <p id="dealer-sum-el">Sum:</p>
+      </div>
 
       <div id="lose-overlay">
         <button onclick="resetGame()">Try Again</button>

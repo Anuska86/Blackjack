@@ -71,6 +71,96 @@ function drawCard() {
   }
 }
 
+//Dealer
+
+function dealerTurn(playerSum) {
+  let dealerCards = [getRandomCard(), getRandomCard()];
+  let dealerSum = calculateSum(dealerCards);
+
+  const dealerContainer = document.getElementById("dealer-container");
+  dealerContainer.innerHTML = "";
+
+  dealerCards.forEach((card) => {
+    const img = document.createElement("img");
+    img.src = getCardFilename(card);
+    img.classList.add("card-img");
+    dealerContainer.appendChild(img);
+    setTimeout(() => img.classList.add("show"), 50);
+  });
+
+  const suitSymbols = {
+    hearts: "♥",
+    diamonds: "♦",
+    clubs: "♣",
+    spades: "♠",
+  };
+
+  const cardText = dealerCards
+    .map((c) => {
+      const name =
+        c.value === 1
+          ? "A"
+          : c.value === 11
+          ? "J"
+          : c.value === 12
+          ? "Q"
+          : c.value === 13
+          ? "K"
+          : c.value;
+      return `${name}${suitSymbols[c.suit]}`;
+    })
+    .join(" ");
+
+  document.getElementById("dealer-cards-el").textContent = "Cards: " + cardText;
+  document.getElementById("dealer-sum-el").textContent = "Sum: " + dealerSum;
+
+  while (dealerSum < 17) {
+    const card = getRandomCard();
+    dealerCards.push(card);
+    dealerSum = calculateSum(dealerCards);
+
+    const img = document.createElement("img");
+    img.src = getCardFilename(card);
+    img.classList.add("card-img");
+    dealerContainer.appendChild(img);
+    setTimeout(() => img.classList.add("show"), 50);
+
+    document.getElementById("dealer-cards-el").textContent =
+      "Cards: " +
+      dealerCards
+        .map((c) => {
+          const name =
+            c.value === 1
+              ? "A"
+              : c.value === 11
+              ? "J"
+              : c.value === 12
+              ? "Q"
+              : c.value === 13
+              ? "K"
+              : c.value;
+          return `${name}${suitSymbols[c.suit]}`;
+        })
+        .join(" ");
+    document.getElementById("dealer-sum-el").textContent = "Sum: " + dealerSum;
+  }
+
+  let message = "";
+  if (dealerSum > 21 || playerSum > dealerSum) {
+    message = "You win! Dealer busted or had lower score 🎉";
+    updateChips(20);
+    launchConfetti();
+  } else if (dealerSum === playerSum) {
+    message = "It's a tie! 🤝";
+  } else {
+    message = "Dealer wins! 😤";
+    updateChips(-20);
+    handleLoss();
+  }
+
+  document.getElementById("message-el").textContent = message;
+}
+
 //Start a new game
 function resetGame() {
   cards = [];
@@ -85,6 +175,10 @@ function resetGame() {
 
   document.getElementById("draw-btn").disabled = true;
   document.getElementById("hold-btn").disabled = true;
+
+  document.getElementById("dealer-cards-el").textContent = "Cards:";
+  document.getElementById("dealer-sum-el").textContent = "Sum:";
+  document.getElementById("dealer-container").innerHTML = "";
 
   const overlay = document.getElementById("lose-overlay");
   overlay.style.opacity = "0";
@@ -193,12 +287,12 @@ function holdGame() {
     let message = "";
     if (sum >= 17 && sum < 21) {
       message = "You chose to hold. Let's see how it plays out... 🤞";
-      updateChips(10);
+      document.getElementById("message-el").textContent = message;
+      setTimeout(() => dealerTurn(sum), 1000);
     } else if (sum < 17) {
       message = "You held early. Risky move! 😬";
       updateChips(-10);
+      document.getElementById("message-el").textContent = message;
     }
-
-    document.getElementById("message-el").textContent = message;
   }
 }
