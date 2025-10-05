@@ -156,6 +156,10 @@ function dealerTurn(playerSum) {
     message = "Dealer wins! 😤";
     updateChips(-20);
     handleLoss();
+    const dealerStrip = document.querySelector(".dealer-info");
+    if (dealerStrip) {
+      dealerStrip.classList.add("dealer-wins");
+    }
   }
 
   document.getElementById("message-el").textContent = message;
@@ -179,6 +183,11 @@ function resetGame() {
   document.getElementById("dealer-cards-el").textContent = "Cards:";
   document.getElementById("dealer-sum-el").textContent = "Sum:";
   document.getElementById("dealer-container").innerHTML = "";
+
+  const dealerStrip = document.querySelector(".dealer-info");
+  if (dealerStrip) {
+    dealerStrip.classList.remove("dealer-wins");
+  }
 
   const overlay = document.getElementById("lose-overlay");
   overlay.style.opacity = "0";
@@ -249,7 +258,7 @@ function renderGame() {
     updateChips(-25);
     handleLoss();
 
-    const table = document.getElementById("table-strip");
+    const table = document.getElementById("main-wrapper");
     table.classList.add("shake");
     setTimeout(() => table.classList.remove("shake"), 500);
   }
@@ -277,6 +286,26 @@ function handleLoss() {
   requestAnimationFrame(() => {
     overlay.style.opacity = "1";
   });
+
+  // Shake the table
+  const table = document.getElementById("main-wrapper");
+  table.classList.add("shake");
+  setTimeout(() => table.classList.remove("shake"), 500);
+
+  // Fade out player cards
+  const cardImgs = document.querySelectorAll("#card-container .card-img");
+  cardImgs.forEach((img) => img.classList.add("fade-out"));
+
+  // Sad emoji rain
+  for (let i = 0; i < 10; i++) {
+    const emoji = document.createElement("div");
+    emoji.textContent = "😭";
+    emoji.className = "emoji-drop";
+    emoji.style.left = `${Math.random() * 100}%`;
+    emoji.style.animationDelay = `${Math.random() * 0.5}s`;
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 2000);
+  }
 }
 
 //HOLD GAME

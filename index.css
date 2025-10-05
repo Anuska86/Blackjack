@@ -174,6 +174,12 @@ button:disabled {
   margin: 8px 0;
 }
 
+.dealer-wins {
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  border-color: red;
+  transition: box-shadow 0.5s ease;
+}
+
 /*Others*/
 
 #cards-el,
@@ -219,6 +225,31 @@ button:disabled {
 
 .shake {
   animation: shake 0.4s ease;
+}
+
+.card-img.fade-out {
+  opacity: 0.2;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(600px);
+    opacity: 0;
+  }
+}
+
+.emoji-drop {
+  position: fixed;
+  top: 0;
+  font-size: 2rem;
+  animation: fall 2s linear forwards;
+  pointer-events: none;
 }
 
 /*PHONES*/
